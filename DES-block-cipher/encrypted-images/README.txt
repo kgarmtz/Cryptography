@@ -1,0 +1,1 @@
+Aquí se agregarán las imágenes cifradas
