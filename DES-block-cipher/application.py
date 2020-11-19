@@ -85,17 +85,29 @@ class cypherDESApp(QMainWindow, Ui_MainWindow):
                 if opm == 0:
                     # Desciframos el contenido de la imagen
                     decrypted_image = decryptDES( image_content, key, opm)
+                    # Validamos si el modo de operación es el correcto
+                    if decrypted_image == 1:
+                        self.createMessageBox('Error!', 'Bad Operation Mode Selected')
+                    else:
+                        # Construimos la imagen con el encabezado y el contenido cifrado
+                        image = image_header + decrypted_image 
+                        writeImageFile( self.fname, image )  
+                        self.createMessageBox('Success!', 'The encrypted image was decrypted successfully')
+                        
                 # Modos de operación: CBC, CFB, OFB 
                 else:
                     # Obtenemos el Vector de Inicialización 
                     iv = readIVFile()
                     # Desciframos el contenido de la imagen
                     decrypted_image = decryptDES( image_content, key, opm, iv)
-                
-                # Construimos la imagen con el encabezado y el contenido cifrado
-                image = image_header + decrypted_image 
-                writeImageFile( self.fname, image )  
-                self.createMessageBox('Success!', 'The encrypted image was decrypted successfully')
+                    # Validamos si el modo de operación es el correcto
+                    if decrypted_image == 1:
+                        self.createMessageBox('Error!', 'Bad Operation Mode Selected')
+                    else:
+                        # Construimos la imagen con el encabezado y el contenido cifrado
+                        image = image_header + decrypted_image 
+                        writeImageFile( self.fname, image )  
+                        self.createMessageBox('Success!', 'The encrypted image was decrypted successfully')
 
         else:
             self.createMessageBox("Error!", f"You must select an image and provide a key of eight characters length")
