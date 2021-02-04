@@ -1,1 +1,0 @@
-Aquí se agregarán las imágenes descifradas
