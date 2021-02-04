@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="cct">
+    <file>Mosaic.jpg</file>
+  </qresource>
+</RCC>

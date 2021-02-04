@@ -1,0 +1,2 @@
+Look for existing cryptographic libraries in the language 
+of your choice an implement one function.
